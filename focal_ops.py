@@ -21,10 +21,3 @@ print(h_padded)
 v_pad = np.zeros(shape = (6, 1))
 
 hv_padded = np.hstack((v_pad, h_padded, v_pad))
-
-print(hv_padded)
-
-
-
-
-
