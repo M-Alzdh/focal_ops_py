@@ -1,1 +1,4 @@
 check for data type and oddness of window size
+
+check if the window selection thing works correctly since it did not in R, especially 
+for the left and botton values
