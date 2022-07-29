@@ -1,8 +1,9 @@
+from locale import windows_locale
 import numpy as np
 
-def focal_ops(x, op_function = 'mean'):
-    #performs focal operations
-
+def focal_ops(x, op_function = 'mean', window_size = 3):
+    """performs focal operations"""
+    
     shape = np.shape(x)
     new_array = np.zeros(shape = shape)
 
@@ -13,12 +14,13 @@ def focal_ops(x, op_function = 'mean'):
         'min' : np.min
     }
 
+    num_neighbor = int((window_size-1)/2)
+
     for i in range(shape[0]):
         for j in range(shape[1]):
 
             indx = [i, j]
-            num_neighbor = 1
-
+            
             left = max(0, indx[0]-num_neighbor)
             right = max(0, indx[0]+num_neighbor+1)
 
@@ -26,17 +28,13 @@ def focal_ops(x, op_function = 'mean'):
             top = max(0,indx[1]+num_neighbor+1)
 
             selection = x[left:right, bottom:top]
-            value = np.round(functions[op_function](selection), 2)
+            value = np.round(functions[op_function](selection), 4)
 
             new_array[indx[0], indx[1]] = value
     print(new_array)
     return(new_array)
     
 
-random_array = np.array(np.random.random_integers(0, 100, size = (4,5)))
+random_array = np.array(np.random.random_integers(0, 5, size = (10,10)))
 
-print(random_array)
-
-focal_ops(random_array)
-
-
+focal_ops(random_array, window_size=5)

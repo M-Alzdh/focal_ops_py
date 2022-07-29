@@ -1,1 +1,1 @@
-add customizable window size
+check for data type and oddness of window size
