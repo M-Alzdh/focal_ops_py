@@ -11,7 +11,8 @@ def focal_ops(x, op_function = 'mean', window_size = 3):
         'mean' : np.mean, 
         'median' : np.median, 
         'max' : np.max, 
-        'min' : np.min
+        'min' : np.min, 
+        'range' : lambda x: np.max(x)- np.min(x)
     }
 
     num_neighbor = int((window_size-1)/2)
@@ -35,6 +36,16 @@ def focal_ops(x, op_function = 'mean', window_size = 3):
     return(new_array)
     
 
-random_array = np.array(np.random.random_integers(0, 5, size = (10,10)))
+random_array = np.array(np.random.random_integers(0, 5, size = (6,6)))
 
-focal_ops(random_array, window_size=5)
+#focal_ops(random_array, window_size=3, op_function='mean')
+
+## aggregate
+
+def aggregate(x, aggregation_factor = 3):
+    shape = np.shape(x)
+    new_shape = int(int(shape[0])/3, int(shape[1])/3)
+    #new_array = np.zeros(shape = )
+    print(new_shape)
+
+aggregate(random_array)
