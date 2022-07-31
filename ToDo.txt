@@ -1,4 +1,6 @@
 check for data type and oddness of window size
 
-check if the window selection thing works correctly since it did not in R, especially 
-for the left and botton values
+check for divisibility of input size by aggregatin factors
+
+implement non-square aggregation factors (as a vectors of 2 items) for non-square
+input matrices
