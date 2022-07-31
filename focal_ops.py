@@ -72,3 +72,4 @@ def aggregate(x, aggregation_factor = 2):
 
 aggregate(random_array, aggregation_factor=3)
 
+## down scaling + smoothing

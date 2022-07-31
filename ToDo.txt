@@ -4,3 +4,5 @@ check for divisibility of input size by aggregatin factors
 
 implement non-square aggregation factors (as a vectors of 2 items) for non-square
 input matrices
+
+add downscaling and smoothing functions
