@@ -38,18 +38,37 @@ def focal_ops(x, op_function = 'mean', window_size = 3):
     return(new_array)
     
 
-random_array = np.array(np.random.randint(0, 5, size = (6,6)))
+random_array = np.array(np.random.randint(0, 10, size = (9,9)))
 
 #focal_ops(random_array, window_size=3, op_function='mean')
 
-## aggregate
+## aggregation 
 
-def aggregate(x, aggregation_factor = 3):
+def aggregate(x, aggregation_factor = 2):
     shape = np.shape(x)
-    new_shape = (shape[0]/3, shape[1]/3)
-    aggregated_mtrx = np.zeros((int(new_shape[0]), int(new_shape[1])))
-    print(aggregated_mtrx)
+    new_shape = (int(shape[0]/aggregation_factor), int(shape[1]/aggregation_factor))
+    means = []
+    row_index = [0]
+    row_index.extend(list(range(aggregation_factor, shape[0], aggregation_factor)))
+    col_index = [0]
+    col_index.extend(list(range(aggregation_factor, shape[1], aggregation_factor)))
+    
+    for i in row_index:
+        for j in col_index:
+            top = i
+            bottom = i+aggregation_factor
 
-aggregate(random_array)
+            left = j
+            right = j+aggregation_factor
+            
+            selection = x[top:bottom, left:right]
+            mean = np.mean(selection)
+            means.append(mean)
+    aggregate_mtrx = np.array(means).reshape(new_shape)
+    print(aggregate_mtrx)
 
+    return(aggregate_mtrx)
+    
+
+aggregate(random_array, aggregation_factor=3)
 
