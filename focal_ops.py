@@ -38,32 +38,33 @@ def focal_ops(x, op_function = 'mean', window_size = 3):
     return(new_array)
     
 
-random_array = np.array(np.random.randint(0, 10, size = (25,25)))
+random_array = np.array(np.random.randint(0, 10, size = (20, 10)))
 
 #focal_ops(random_array, window_size=3, op_function='mean')
 
 
 ## aggregation 
 
-def aggregate(x, aggregation_factor = 2, aggregation_function = 'mean'):
-    agg_fact = aggregation_factor
+def aggregate(x, aggregation_factor = (2, 2), aggregation_function = 'mean'):
+    row_agg_fact = aggregation_factor[0]
+    col_agg_fact = aggregation_factor[1]
     shape = np.shape(x)
-    new_shape = (int(shape[0]/agg_fact), int(shape[1]/agg_fact))
+    new_shape = (int(shape[0]/row_agg_fact), int(shape[1]/col_agg_fact))
     aggregate_mtrx = np.empty(new_shape)
 
     functions = {
         'mean' : np.mean, 
-        'median' : np.median, 
+        'median' : np.median 
     }
         
     for i in range(0, new_shape[0]):
         for j in range(0, new_shape[1]):
 
-            top = i * agg_fact
-            bottom = (i*agg_fact) + agg_fact
+            top = i * row_agg_fact
+            bottom = (i*row_agg_fact) + row_agg_fact
 
-            left = j * agg_fact
-            right = (j * agg_fact) + agg_fact
+            left = j * col_agg_fact
+            right = (j * col_agg_fact) + col_agg_fact
             
             selection = x[top:bottom, left:right]
             
@@ -73,6 +74,6 @@ def aggregate(x, aggregation_factor = 2, aggregation_function = 'mean'):
     return(aggregate_mtrx)
     
 
-aggregate(random_array, aggregation_factor=5, aggregation_function='mean')
+aggregate(random_array, aggregation_factor=(1,1), aggregation_function='mean')
 
 ## down scaling + smoothing
