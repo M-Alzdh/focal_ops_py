@@ -1,8 +1,3 @@
-check for data type and oddness of window size
-
-check for divisibility of input size by aggregatin factors
-
-implement non-square aggregation factors (as a vectors of 2 items) for non-square
-input matrices
+check for oddness of window size
 
 add downscaling and smoothing functions

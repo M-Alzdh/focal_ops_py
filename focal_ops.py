@@ -94,7 +94,4 @@ def aggregate(x, aggregation_factor = (2, 2), aggregation_function = 'mean'):
         return(aggregate_mtrx)
     
 
-aggregate([1, 2, 3], (5, 5))
-
-
 ## down scaling + smoothing
