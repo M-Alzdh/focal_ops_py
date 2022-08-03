@@ -1,3 +1,4 @@
+from dis import dis
 from locale import windows_locale
 
 import numpy as np
@@ -55,7 +56,7 @@ def focal_ops(x, op_function = 'mean', window_size = 3):
         return(new_array)
     
 
-random_array = np.array(np.random.randint(0, 10, size = (10, 10)))
+random_array = np.array(np.random.randint(0, 10, size = (4, 4)))
 
 #focal_ops(random_array, window_size=3, op_function='mean')
 
@@ -95,3 +96,26 @@ def aggregate(x, aggregation_factor = (2, 2), aggregation_function = 'mean'):
     
 
 ## down scaling + smoothing
+
+def disaggregate(x, disaggregation_factor = ()):
+    row_dis_agg_fact = disaggregation_factor[0]
+    col_dis_agg_fact = disaggregation_factor[1]
+    shape = np.shape(x)
+    new_shape = (int(shape[0]*row_dis_agg_fact), int(shape[1]*col_dis_agg_fact))
+    while input_check(x): 
+        disaggregated_mtrx = np.zeros(shape = new_shape)
+        for i in range(0, shape[0]):
+            for j in range(0, shape[1]):
+                value_in_x = float(x[i, j])
+                top = i*row_dis_agg_fact
+                bottom = (i*row_dis_agg_fact)+row_dis_agg_fact
+                left = j*col_dis_agg_fact
+                right = (j*col_dis_agg_fact)+col_dis_agg_fact
+                disaggregated_mtrx[top:bottom, left:right] = value_in_x
+        print(disaggregated_mtrx)
+        return(disaggregated_mtrx)
+print(random_array)
+disaggregate(random_array, disaggregation_factor=(3, 3))
+    
+
+
