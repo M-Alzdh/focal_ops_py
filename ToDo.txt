@@ -1,3 +1,6 @@
 check for oddness of window size
 
-add downscaling and smoothing functions
+add smoothing/interpolation function for post-processing 
+downscaled matrices (fit a pdf to each row and col, then interpolate and 
+assign new values accordingly OR strech the pdf(????) and use it to generate
+the values in the output)

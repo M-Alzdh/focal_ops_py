@@ -95,7 +95,7 @@ def aggregate(x, aggregation_factor = (2, 2), aggregation_function = 'mean'):
         return(aggregate_mtrx)
     
 
-## down scaling + smoothing
+## down scaling
 
 def disaggregate(x, disaggregation_factor = ()):
     row_dis_agg_fact = disaggregation_factor[0]
