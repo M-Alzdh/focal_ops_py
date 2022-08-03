@@ -15,7 +15,7 @@ def input_check (x, check_divisibility = False, divisible_by = ()):
     if check_divisibility:
         if not shape[0] % divisible_by[0] == 0 or not shape[1] % divisible_by[1] == 0:
             raise Exception("the length of at least one of the input's is not divisible by the respective aggregation factor")
-
+    
     return(True) 
 
 
@@ -115,6 +115,7 @@ def disaggregate(x, disaggregation_factor = ()):
         print(disaggregated_mtrx)
         return(disaggregated_mtrx)
 print(random_array)
+
 disaggregate(random_array, disaggregation_factor=(3, 3))
     
 
